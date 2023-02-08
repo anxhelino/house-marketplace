@@ -4,6 +4,7 @@ import { doc, setDoc, getDoc, serverTimestamp } from "firebase/firestore";
 import { db } from "../firebase.config";
 import { toast } from "react-toastify";
 import googleIcon from "../assets/svg/googleIcon.svg";
+import { Link } from "react-router-dom";
 
 function OAuth() {
   const navigate = useNavigate();
@@ -41,6 +42,13 @@ function OAuth() {
       <button className="socialIconDiv" onClick={onGoogleClick}>
         <img className="socialIconImg" src={googleIcon} alt="google" />
       </button>
+      {location.pathname === "/sign-in" ? (
+        <Link to="/sign-up" className="registerLink">
+          Sign Up Instead
+        </Link>
+      ) : (
+        ""
+      )}
     </div>
   );
 }
